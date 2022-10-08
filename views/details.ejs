@@ -1,0 +1,22 @@
+<h1 class="text-muted">Detail Contact</h1>
+
+<a href="/contact" class="btn btn-dark px-4 mt-4">
+    <i class="fa-solid fa-angle-left"></i>
+</a>
+
+<div class="container mt-4">
+    <div class="card shadow" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title mb-3"><%= contact.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= contact.email %></h6>
+            <p class="card-subtitle mb-2 text-muted"><%= contact.pass %></p>
+            <div class="d-flex justify-content-between pt-4">
+                <a href="/edit/<%= contact.name %>" class="badge bg-success px-4 py-2 text-decoration-none fw-normal">Edit</a>
+                <form method="POST" action="/contact?_method=DELETE">
+                    <input type="hidden" name="name" value="<%= contact.name %>">
+                    <button type="submit" class="badge bg-danger px-3 py-2 border text-decoration-none fw-normal" onclick="return confirm('Sure ?')">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

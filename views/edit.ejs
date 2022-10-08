@@ -1,0 +1,38 @@
+<h1 class="text-muted"><%= title %> Page</h1>
+
+<a href="/contact/detail/<%= contact.name %>" class="btn btn-dark px-4 mt-4">
+    <i class="fa-solid fa-angle-left"></i>
+</a>
+
+<% if (typeof errors != 'undefined') { %> 
+    <div class="alert alert-danger mt-4" role="alert">
+        <% errors.forEach(err => { %>
+            <ul class="mb-0">
+                <li class="text-muted"><%= err.msg %></li>
+            </ul>
+        <% }) %>
+    </div>
+<% } %>
+
+<div class="container mt-3">
+    <form method="post" action="/contact?_method=PUT" class="rounded-3 px-5 py-4 shadow border" style="background-color: fff;">
+        <input type="hidden" name="_id" value="<%= contact._id %>">
+        <input type="hidden" name="oldname" value="<%= contact.oldname || contact.name %>">
+        <div class="mb-3">
+            <label for="name" class="form-label text-muted">Nickname :</label>
+            <input type="text" class="form-control" name="name" id="name" value="<%= contact.name %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label text-muted">Email Address :</label>
+            <input type="email" class="form-control" name="email" id="email" value="<%= contact.email %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label text-muted">Password :</label>
+            <input type="text" class="form-control" name="pass" id="pass" value="<%= contact.pass %>" required>
+        </div>
+        <br>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+        </div>
+    </form>
+</div>

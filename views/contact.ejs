@@ -1,0 +1,41 @@
+<h1 class="text-muted"><%= title %> Page</h1>
+
+<% if (contacts.length === 0) { %>
+  <div class="alert alert-danger mt-4" role="alert">
+    <span>Empty Contact</span>&nbsp;&nbsp;&nbsp;
+    <a href="/contact/add" class="text-decoration-none">
+      <i class="fa-solid fa-angle-right text-secondary"></i>
+      &nbsp;&nbsp;
+      <span>Add Contact</span>
+    </a>
+  </div>
+<% } %>
+
+<table class="table mt-5 text-muted">
+    <thead>
+      <tr>
+        <th scope="col">Bil</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% contacts.forEach((e, i) => { i++ %>
+        <tr>
+            <th scope="row"><%= i %> </th>
+            <td><%= e.name %></td>
+            <td><%= e.email %></td>
+            <td><%= e.pass %></td>
+            <td>
+                <a href="/contact/detail/<%= e.name %>" class="badge bg-primary px-3 text-decoration-none fw-normal">details</a>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-end w-100 mt-4">
+    <a href="/contact/add" class="btn btn-dark px-4">Add data</a>
+  </div>
